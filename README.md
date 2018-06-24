@@ -18,3 +18,6 @@ Plase visit [RajaOngkir.com](https://rajaongkir.com)
 
 ## How To Run?
 Plase visit `http://localhost/ongkirkuy/site`
+
+## License
+[MIT](https://github.com/andriannus/ongkirkuy/blob/master/LICENSE)
