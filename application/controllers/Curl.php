@@ -22,7 +22,7 @@ class Curl extends CI_Controller {
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "GET",
 			CURLOPT_HTTPHEADER => [
-				"key: 7d66ae06d7ea32154c0c977bc9d1636e"
+				"key: API_KEY"
 			],
 		]);
 
@@ -50,7 +50,7 @@ class Curl extends CI_Controller {
 				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 				CURLOPT_CUSTOMREQUEST => "GET",
 				CURLOPT_HTTPHEADER => [
-					"key: 7d66ae06d7ea32154c0c977bc9d1636e"
+					"key: API_KEY"
 				],
 			]);
 
@@ -64,7 +64,7 @@ class Curl extends CI_Controller {
 				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 				CURLOPT_CUSTOMREQUEST => "GET",
 				CURLOPT_HTTPHEADER => [
-					"key: 7d66ae06d7ea32154c0c977bc9d1636e"
+					"key: API_KEY"
 				],
 			]);
 		}
@@ -99,7 +99,7 @@ class Curl extends CI_Controller {
 			CURLOPT_POSTFIELDS => "origin=".$o."&destination=".$d."&weight=".$w."&courier=".$c,
 			CURLOPT_HTTPHEADER => [
 				"content-type: application/x-www-form-urlencoded",
-				"key: 7d66ae06d7ea32154c0c977bc9d1636e"
+				"key: API_KEY"
 			],
 		]);
 
