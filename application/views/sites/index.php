@@ -16,7 +16,17 @@
 						<i class="fas fa-spinner fa-spin"></i>
 					</p>
 
-					<div class="card" v-if="!loading">
+					<div class="has-text-centered" v-if="!loading && limit">
+						<p class="title">
+							<i class="fas fa-frown"></i>
+						</p>
+						<p class="subtitle">
+							Maaf, Cek Ongkir sudah mencapai limit harian. <br>
+							Silahkan coba esok hari
+						</p>
+					</div>
+
+					<div class="card" v-if="!loading && !limit">
 						<div class="card-header">
 							<p class="card-header-title">Cek Ongkir Disini</p>
 						</div>
@@ -126,7 +136,14 @@
 
 						<div class="card-footer">
 							<p class="card-footer-item">
-								<button type="button" class="button is-link is-outlined" :disabled="!origin || !destination || !weight" @click="postCost" v-if="!loadingPost">Submit</button>
+								<button
+									type="button"
+									class="button
+									is-link is-outlined"
+									:disabled="!origin || !destination || !weight || loadingCitiesOrigin || loadingCitiesDestination"
+									@click="postCost"
+									v-if="!loadingPost"
+								>Submit</button>
 								<button type="button" class="button is-link is-loading" v-if="loadingPost">Submit</button>
 							</p>
 						</div>
@@ -155,7 +172,8 @@ const app = new Vue({
 		loadingCitiesOrigin: true,
 		loadingCitiesDestination: true,
 		loadingPost: false,
-		loading: true
+		loading: true,
+		limit: false
 	}),
 
 	created () {
@@ -170,8 +188,8 @@ const app = new Vue({
 			axios.get('<?= base_url() ?>' + 'curl/getprovince')
 				.then(res => {
 					if (res.data.rajaongkir.status.code === 400) {
-						this.loadingProvinceOrigin = false
-						alert('Tidak dapat melakukan cek ongkir karena limit dari RajaOngkir')
+						this.loading = false
+						this.limit = true
 
 					} else {
 						this.provinces = res.data.rajaongkir.results
