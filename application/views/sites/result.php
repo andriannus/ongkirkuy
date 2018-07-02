@@ -1,7 +1,7 @@
 <div id="app">
 	<section class="hero is-info">
 		<div class="hero-body">
-			<div class="container">
+			<div class="container wow slideInLeft" data-wow-duration="2s" data-wow-offset="0">
 				<h1 class="title">Hasil Perhitungan Ongkos Kirim <i class="fas fa-clipboard-check"></i></h1>
 				<h2 class="subtitle">di OngkirKuy</h2>
 			</div>
@@ -13,7 +13,7 @@
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
 					<div v-if="found">
-						<div class="card">
+						<div class="card wow zoomIn" data-wow-duration="2s" data-wow-offset="0">
 							<header class="card-header">
 								<p class="card-header-title">Detail Pengiriman</p>
 							</header>
@@ -37,7 +37,7 @@
 
 						<hr>
 
-						<div class="table-responsive">
+						<div class="table-responsive wow zoomIn" data-wow-duration="2s" data-wow-offset="0">
 							<table class="table is-fullwidth is-striped is-bordered">
 								<thead>
 									<tr>
@@ -63,11 +63,15 @@
 						</div>
 					</div>
 
-					<p v-if="!found" class="title">Data <u>kadaluwarsa</u> atau <u>tidak tersedia</u>. Silahkan cek kembali.</p>
+					<p v-if="!found" class="title wow zoomIn" data-wow-duration="2s" data-wow-delay="1s" data-wow-offset="0">
+						Data <u>kadaluwarsa</u> atau <u>tidak tersedia</u>. Silahkan cek kembali.
+					</p>
 
 					<hr>
 
-					<a class="button is-link is-outlined" href="<?= base_url('site/index') ?>"><i class="fa fa-arrow-left"></i>&nbsp; Cek Kembali</a>
+					<a class="button is-link is-outlined wow zoomIn" href="<?= base_url('site/index') ?>" data-wow-duration="2s" data-wow-delay="1s" data-wow-offset="0">
+						<i class="fa fa-arrow-left"></i>&nbsp; Cek Kembali
+					</a>
 				</div>
 			</div>
 		</div>

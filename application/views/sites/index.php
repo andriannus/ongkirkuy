@@ -1,7 +1,7 @@
 <div id="app">
 	<section class="hero is-info">
 		<div class="hero-body">
-			<div class="container">
+			<div class="container wow slideInLeft" data-wow-duration="2s">
 				<h1 class="title">Selamat datang <i class="far fa-smile-beam"></i></h1>
 				<h2 class="subtitle">di OngkirKuy</h2>
 			</div>
