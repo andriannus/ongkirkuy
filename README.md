@@ -3,8 +3,8 @@ Check shipping rates with API from RajaOngkir
 
 ## Tools
 1. PHP - CodeIgniter `3.1.9`
-2. CSS - Bulma
-3. JavaScript - Vue.js `2.5.16`
+2. CSS - Bulma & animate.css
+3. JavaScript - Vue.js `2.5.16` & Wow.js
 4. API RajaOngkir `Starter`
 
 ## Installation
