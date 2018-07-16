@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Site extends CI_Controller {
 
+	public $app = 'cores/layouts/app';
+
 	public function index()
 	{
 		$data = [
@@ -10,7 +12,7 @@ class Site extends CI_Controller {
 			'page' => 'sites/index'
 		];
 
-		$this->load->view('cores/layouts/app', $data);
+		$this->load->view($this->app, $data);
 	}
 
 	public function result()
@@ -20,6 +22,6 @@ class Site extends CI_Controller {
 			'page' => 'sites/result'
 		];
 
-		$this->load->view('cores/layouts/app', $data);
+		$this->load->view($this->app, $data);
 	}
 }

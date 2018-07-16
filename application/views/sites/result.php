@@ -1,7 +1,11 @@
-<div id="app">
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+
+<div id="result">
 	<section class="hero is-info">
 		<div class="hero-body">
-			<div class="container wow slideInLeft" data-wow-duration="2s" data-wow-offset="0">
+			<div class="container wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
 				<h1 class="title">Hasil Perhitungan Ongkos Kirim <i class="fas fa-clipboard-check"></i></h1>
 				<h2 class="subtitle">di OngkirKuy</h2>
 			</div>
@@ -13,7 +17,7 @@
 			<div class="columns">
 				<div class="column is-8 is-offset-2">
 					<div v-if="found">
-						<div class="card wow zoomIn" data-wow-duration="2s" data-wow-offset="0">
+						<div class="card wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
 							<header class="card-header">
 								<p class="card-header-title">Detail Pengiriman</p>
 							</header>
@@ -37,7 +41,7 @@
 
 						<hr>
 
-						<div class="table-responsive wow zoomIn" data-wow-duration="2s" data-wow-offset="0">
+						<div class="table-responsive wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s">
 							<table class="table is-fullwidth is-striped is-bordered">
 								<thead>
 									<tr>
@@ -63,13 +67,13 @@
 						</div>
 					</div>
 
-					<p v-if="!found" class="title wow zoomIn" data-wow-duration="2s" data-wow-delay="1s" data-wow-offset="0">
+					<p v-if="!found" class="title wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
 						Data <u>kadaluwarsa</u> atau <u>tidak tersedia</u>. Silahkan cek kembali.
 					</p>
 
 					<hr>
 
-					<a class="button is-link is-outlined wow zoomIn" href="<?= base_url('site/index') ?>" data-wow-duration="2s" data-wow-delay="1s" data-wow-offset="0">
+					<a class="button is-link is-outlined wow zoomIn" href="<?= base_url('site/index') ?>" data-wow-duration="1s" data-wow-delay="0.8s">
 						<i class="fa fa-arrow-left"></i>&nbsp; Cek Kembali
 					</a>
 				</div>
@@ -79,8 +83,8 @@
 </div>
 
 <script>
-const app = new Vue({
-	el: '#app',
+new Vue({
+	el: '#result',
 
 	data: () => ({
 		costs: {},

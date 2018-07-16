@@ -1,7 +1,11 @@
-<div id="app">
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
+
+<div id="index">
 	<section class="hero is-info">
 		<div class="hero-body">
-			<div class="container wow slideInLeft" data-wow-duration="2s">
+			<div class="container wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
 				<h1 class="title">Selamat datang <i class="far fa-smile-beam"></i></h1>
 				<h2 class="subtitle">di OngkirKuy</h2>
 			</div>
@@ -155,8 +159,8 @@
 </div>
 
 <script>
-const app = new Vue({
-	el: '#app',
+new Vue({
+	el: '#index',
 	data: () => ({
 		origin: '',
 		destination: '',
@@ -206,7 +210,7 @@ const app = new Vue({
 				})
 				.catch(err => {
 					this.loadingProvinceOrigin = false
-					alert('Terjadi error. Silahkan coba kembali')
+					alert('Terjadi error. Silahkan refresh halaman')
 				})
 		},
 
@@ -233,7 +237,7 @@ const app = new Vue({
 					}
 				})
 				.catch(err => {
-					console.log(err)
+					alert('Terjadi error. Silahkan refresh halaman')
 				})
 		},
 
@@ -242,13 +246,12 @@ const app = new Vue({
 			let cost = 'origin=' + this.origin + '&destination=' + this.destination + '&weight=' + this.weight + '&courier=' + this.courier
 			axios.post('<?= base_url() ?>' + 'curl/postcost', cost)
 				.then(res => {
-					console.log(res)
 					localStorage.setItem('cost', JSON.stringify(res.data.rajaongkir))
 					window.location.replace('<?= base_url() ?>' + 'site/result')
 					this.loadingPost = false
 				})
 				.catch(err => {
-					alert('Terjadi error. Silahkan coba kembali')
+					alert('Terjadi error. Silahkan refresh halaman')
 					this.loadingPost = false
 				})
 		},

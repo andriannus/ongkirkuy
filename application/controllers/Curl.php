@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Curl extends CI_Controller {
 
 	public $curl;
+	public $base_url = 'https://api.rajaongkir.com/starter/';
+	public const API_KEY = 'API_KEY';
 
 	public function __construct()
 	{
@@ -14,7 +16,7 @@ class Curl extends CI_Controller {
 	public function getProvince()
 	{
 		curl_setopt_array($this->curl, [
-			CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+			CURLOPT_URL => $this->base_url . "province",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,
@@ -22,7 +24,7 @@ class Curl extends CI_Controller {
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "GET",
 			CURLOPT_HTTPHEADER => [
-				"key: API_KEY"
+				"key: " . self::API_KEY
 			],
 		]);
 
@@ -33,6 +35,7 @@ class Curl extends CI_Controller {
 
 		if ($err) {
 			echo "cURL Error #: " . $err;
+
 		} else {
 			echo $response;
 		}
@@ -40,34 +43,18 @@ class Curl extends CI_Controller {
 
 	public function getCity($province)
 	{
-		if (isset($province)) {
-			curl_setopt_array($this->curl, [
-				CURLOPT_URL => "https://api.rajaongkir.com/starter/city?province=".$province,
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_ENCODING => "",
-				CURLOPT_MAXREDIRS => 10,
-				CURLOPT_TIMEOUT => 30,
-				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-				CURLOPT_CUSTOMREQUEST => "GET",
-				CURLOPT_HTTPHEADER => [
-					"key: API_KEY"
-				],
-			]);
-
-		} else {
-			curl_setopt_array($this->curl, [
-				CURLOPT_URL => "https://api.rajaongkir.com/starter/city",
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_ENCODING => "",
-				CURLOPT_MAXREDIRS => 10,
-				CURLOPT_TIMEOUT => 30,
-				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-				CURLOPT_CUSTOMREQUEST => "GET",
-				CURLOPT_HTTPHEADER => [
-					"key: API_KEY"
-				],
-			]);
-		}
+		curl_setopt_array($this->curl, [
+			CURLOPT_URL => $this->base_url . "city" . (isset($province) ? '?province=' . $province : ''),
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => [
+				"key: " . self::API_KEY
+			],
+		]);
 
 		$response = curl_exec($this->curl);
 		$err = curl_error($this->curl);
@@ -76,6 +63,7 @@ class Curl extends CI_Controller {
 
 		if ($err) {
 			echo "cURL Error #: " . $err;
+
 		} else {
 			echo $response;
 		}
@@ -89,7 +77,7 @@ class Curl extends CI_Controller {
 		$c = $this->input->post('courier');
 
 		curl_setopt_array($this->curl, [
-			CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+			CURLOPT_URL => $this->base_url . "cost",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,
@@ -99,7 +87,7 @@ class Curl extends CI_Controller {
 			CURLOPT_POSTFIELDS => "origin=".$o."&destination=".$d."&weight=".$w."&courier=".$c,
 			CURLOPT_HTTPHEADER => [
 				"content-type: application/x-www-form-urlencoded",
-				"key: API_KEY"
+				"key: " . self::API_KEY
 			],
 		]);
 
@@ -110,6 +98,7 @@ class Curl extends CI_Controller {
 
 		if ($err) {
 			echo "cURL Error #: " . $err;
+
 		} else {
 			echo $response;
 		}
